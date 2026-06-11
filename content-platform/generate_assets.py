@@ -156,10 +156,10 @@ def save(img, name):
 
 def quote_cards():
     quotes = [
-        ("Your future isn't random. It's hidden in your skills.", "THE VEIL MANTRA"),
-        ("Your degree is a starting point, not a ceiling.", "CAREER TRUTH #1"),
-        ("Skills compound. Start stacking before the market asks.", "CAREER TRUTH #2"),
-        ("The best career move is the one your skills already point to.", "CAREER TRUTH #3"),
+        ("Five tools shattered my flow. So I built one.", "FROM THE FOUNDER"),
+        ("Your AI should hold the full context of your work, not just the last message.", "THE VEIL THESIS"),
+        ("Research smarter. Build stronger models.", "THE VEIL MANTRA"),
+        ("Switch modes mid-session. Lose nothing.", "CONTEXT IS EVERYTHING"),
     ]
     for i, (q, kicker) in enumerate(quotes, 1):
         img, d = new_canvas(POST)
@@ -172,7 +172,7 @@ def quote_cards():
         draw_block(d, q, font(FONT_SERIF, 76), 0, int(h * 0.40), w - 280,
                    anchor_center=True, w=w)
         accent_bar(d, w // 2 - 92, int(h * 0.78))
-        d.text((w // 2, int(h * 0.83)), "See what your skills are worth → veilresearch.com",
+        d.text((w // 2, int(h * 0.83)), "One workspace. Five modes. → veilresearch.com",
                font=font(FONT_REG, 32), fill=MUTED, anchor="ma")
         footer(d, POST)
         save(img, f"quote-card-{i:02d}.png")
@@ -180,26 +180,26 @@ def quote_cards():
 
 def stat_cards():
     stats = [
-        ("39%", "of core job skills will change by 2030.",
-         "Source: WEF, Future of Jobs Report 2025"),
-        ("170M", "new jobs will be created this decade. Will yours be one of them?",
-         "Source: WEF, Future of Jobs Report 2025"),
-        ("92M", "roles will be displaced by 2030. Skill gaps decide who moves up.",
-         "Source: WEF, Future of Jobs Report 2025"),
-        ("1 in 2", "graduates work outside their field of study. Your skills travel further than your degree.",
-         "Insight: Veil AI career mapping"),
+        ("5", "expert AI modes in one workspace: Research, Biology, Flywheel, Write, Mathematics.",
+         "Switch instantly. Keep everything."),
+        ("1000+", "ready-to-run pipelines: literature synthesis, AlphaFold runs, fine-tunes, LaTeX drafts.",
+         "Use them as-is or adapt them."),
+        ("2,400+", "researchers are already inside Early Access.",
+         "The waitlist is open."),
+        ("0", "config needed. The sandboxed runtime handles packages, environments and GPUs.",
+         "Jump straight into research."),
     ]
     for i, (big, line, src) in enumerate(stats, 1):
         img, d = new_canvas(POST)
         w, h = POST
         draw_logo(d, 70, 70)
-        chip(d, w - 410, 78, "CAREER SIGNAL", FUCHSIA)
+        chip(d, w - 410, 78, "VEIL IN NUMBERS", FUCHSIA)
         d.text((w // 2, int(h * 0.26)), big, font=font(FONT_BOLD, 230), fill=WHITE, anchor="ma")
         accent_bar(d, w // 2 - 92, int(h * 0.47))
         draw_block(d, line, font(FONT_BOLD, 56), 0, int(h * 0.53), w - 240,
                    anchor_center=True, w=w)
         d.text((w // 2, int(h * 0.78)), src, font=font(FONT_REG, 28), fill=MUTED, anchor="ma")
-        d.text((w // 2, int(h * 0.84)), "Map your skill gap free → veilresearch.com",
+        d.text((w // 2, int(h * 0.84)), "Open the dashboard → veilresearch.com",
                font=font(FONT_REG, 32), fill=CYAN, anchor="ma")
         footer(d, POST)
         save(img, f"stat-card-{i:02d}.png")
@@ -207,10 +207,10 @@ def stat_cards():
 
 def reel_covers():
     covers = [
-        ("POV:", "You finally know what to do with your degree", "WATCH TILL THE END"),
-        ("5 CAREERS", "your skills already unlock (no extra degree needed)", "SAVE THIS"),
-        ("I ASKED AI", "what my degree is actually worth…", "PART 1"),
-        ("STOP", "choosing your career blindly. Do this instead.", "60 SECONDS"),
+        ("POV:", "Your literature review finishes while you sleep", "WATCH TILL THE END"),
+        ("50 PAPERS", "synthesized into one survey. One prompt.", "SAVE THIS"),
+        ("I MADE AI", "read 50 papers so I didn't have to…", "PART 1"),
+        ("STOP", "juggling 5 tabs to do one research task.", "60 SECONDS"),
     ]
     for i, (big, sub, badge) in enumerate(covers, 1):
         img, d = new_canvas(TALL)
@@ -231,14 +231,14 @@ def reel_covers():
 
 def feature_cards():
     feats = [
-        ("NEW", "Career Analyzer",
-         "Drop in your degree, skills and interests. Veil's AI maps the career paths you are already qualified for."),
-        ("NEW", "Skill Gap Detection",
-         "See exactly which skills stand between you and your target role - ranked by impact, not guesswork."),
-        ("NEW", "Learning Roadmap",
-         "A personalized, step-by-step plan that turns your skill gaps into a sequence you can actually follow."),
-        ("SOON", "Career Match Score",
-         "One score that tells you how close you are to any role. Join the waitlist to get it first."),
+        ("NEW", "Five Modes",
+         "Research, Biology, Flywheel, Write, Mathematics - switch mid-session without losing any context."),
+        ("NEW", "1000+ Workflows",
+         "Ready-to-run pipelines for literature synthesis, protein analysis, fine-tuning and paper drafting."),
+        ("NEW", "Always-On Agents",
+         "Kick off a training run or literature review, close the browser - your agents keep going."),
+        ("NEW", "Your Compute",
+         "Wire GitHub, Hugging Face, W&B and Modal once - credentials flow to every agent automatically."),
     ]
     for i, (badge, title, body) in enumerate(feats, 1):
         img, d = new_canvas(POST)
@@ -258,17 +258,17 @@ def feature_cards():
 
 def carousel():
     slides = [
-        ("COVER", "5 skills AI can't replace", "(and how to build them)", None),
-        ("01", "Judgment", None,
-         "AI gives you options. Deciding which one matters - with incomplete information - is still a human edge."),
-        ("02", "Storytelling", None,
-         "Data informs, stories move. The person who can explain the 'why' owns the room."),
-        ("03", "Negotiation", None,
-         "Reading people, timing and trade-offs in real time. No model does this for you yet."),
-        ("04", "Taste", None,
-         "Knowing what 'great' looks like in your field. Taste is trained by reps, not prompts."),
-        ("05", "Leadership", None,
-         "Trust is built between humans. Teams follow people, not outputs."),
+        ("COVER", "5 AI modes. One workspace.", "(inside Veil Research)", None),
+        ("01", "Research", None,
+         "Full-cycle automation: hypotheses, literature synthesis, experiment planning, GPU training, manuscript drafts."),
+        ("02", "Biology", None,
+         "Protein design, genomics, pathway analysis and biomedical reasoning - wet-lab and computational."),
+        ("03", "Flywheel", None,
+         "Turn production usage into compounding model gains: auto fine-tunes, evals, continuous shipping."),
+        ("04", "Write", None,
+         "Rough notes to publication-ready papers: structured arguments, fact-checked citations, clean LaTeX."),
+        ("05", "Mathematics", None,
+         "Arithmetic to research-level math: step-by-step working, formal proofs, KaTeX rendering, graphs."),
     ]
     n = len(slides)
     for i, (num, title, sub, body) in enumerate(slides, 1):
@@ -277,7 +277,7 @@ def carousel():
         draw_logo(d, 70, 70)
         d.text((w - 70, 100), f"{i}/{n}", font=font(FONT_BOLD, 36), fill=MUTED, anchor="rm")
         if num == "COVER":
-            chip(d, 70, int(h * 0.26), "CAREER PLAYBOOK", CYAN)
+            chip(d, 70, int(h * 0.26), "PLATFORM TOUR", CYAN)
             draw_block(d, title, font(FONT_BOLD, 104), 70, int(h * 0.35), w - 160)
             d.text((70, int(h * 0.62)), sub, font=font(FONT_REG, 48), fill=MUTED)
             d.text((70, int(h * 0.74)), "Swipe →", font=font(FONT_BOLD, 44), fill=CYAN)
@@ -288,20 +288,20 @@ def carousel():
             accent_bar(d, 74, int(h * 0.55))
             draw_block(d, body, font(FONT_REG, 44), 70, int(h * 0.60), w - 200, fill=MUTED)
             if i == n:
-                d.text((70, int(h * 0.82)), "Find your skill gaps → veilresearch.com",
+                d.text((70, int(h * 0.82)), "Try every mode → veilresearch.com",
                        font=font(FONT_BOLD, 36), fill=CYAN)
         footer(d, POST)
-        save(img, f"carousel-skills-{i:02d}.png")
+        save(img, f"carousel-modes-{i:02d}.png")
 
 
 def story_templates():
     img, d = new_canvas(TALL)
     w, h = TALL
     draw_logo(d, 70, 90)
-    chip(d, 70, int(h * 0.20), "WAITLIST OPEN", CYAN)
-    draw_block(d, "Be first when the Career Match Score drops.",
+    chip(d, 70, int(h * 0.20), "EARLY ACCESS", CYAN)
+    draw_block(d, "2,400+ researchers are already inside.",
                font(FONT_BOLD, 84), 70, int(h * 0.27), w - 180)
-    draw_block(d, "Early access. Zero spam. Your future, decoded.",
+    draw_block(d, "Research. Write. Train. One workspace. Be next.",
                font(FONT_REG, 44), 70, int(h * 0.52), w - 200, fill=MUTED)
     d.rounded_rectangle([70, int(h * 0.66), w - 70, int(h * 0.66) + 130],
                         radius=65, outline=FUCHSIA, width=3)
@@ -313,13 +313,13 @@ def story_templates():
     img, d = new_canvas(TALL)
     draw_logo(d, 70, 90)
     chip(d, 70, int(h * 0.18), "Q&A", VIOLET)
-    draw_block(d, "Ask me anything about your career path.",
+    draw_block(d, "Ask me anything about AI research workflows.",
                font(FONT_BOLD, 88), 70, int(h * 0.25), w - 180)
     d.rounded_rectangle([70, int(h * 0.50), w - 70, int(h * 0.50) + 220],
                         radius=36, fill=(255, 255, 255, 18))
     d.text((w // 2, int(h * 0.50) + 110), "[ question sticker here ]",
            font=font(FONT_REG, 40), fill=MUTED, anchor="mm")
-    d.text((70, int(h * 0.72)), "Best ones get a full AI career map, free.",
+    d.text((70, int(h * 0.72)), "Best ones get a live pipeline demo.",
            font=font(FONT_REG, 40), fill=CYAN)
     footer(d, TALL)
     save(img, "story-qna-02.png")
@@ -327,8 +327,8 @@ def story_templates():
     img, d = new_canvas(TALL)
     draw_logo(d, 70, 90)
     chip(d, 70, int(h * 0.18), "THIS OR THAT", FUCHSIA)
-    draw_block(d, "Pick your 2026 move:", font(FONT_BOLD, 92), 70, int(h * 0.25), w - 180)
-    for j, (label, y) in enumerate([("Chase the title", 0.42), ("Stack the skills", 0.56)]):
+    draw_block(d, "Pick your research bottleneck:", font(FONT_BOLD, 92), 70, int(h * 0.25), w - 180)
+    for j, (label, y) in enumerate([("Reading papers", 0.44), ("Training models", 0.58)]):
         d.rounded_rectangle([70, int(h * y), w - 70, int(h * y) + 150], radius=36,
                             outline=CYAN if j else VIOLET, width=3)
         d.text((w // 2, int(h * y) + 75), label, font=font(FONT_BOLD, 56),
@@ -411,41 +411,41 @@ def render_video(name, scenes, duration=None, colors=("0x0B0716", "0x2A1463", "0
 
 def videos():
     render_video("reel-01-brand-intro.mp4", [
-        (overlay_frame(["VEIL AI"], sub="Your future isn't random. It's hidden in your skills.", badge="INTRODUCING"), 0.3, 4.2),
-        (overlay_frame(["See it.", "Map it.", "Build it."], cta="veilresearch.com"), 4.4, 8.5),
+        (overlay_frame(["VEIL"], sub="The Research AI Platform. Research. Write. Train.", badge="INTRODUCING"), 0.3, 4.2),
+        (overlay_frame(["One workspace.", "Five modes."], cta="veilresearch.com"), 4.4, 8.5),
     ])
-    render_video("reel-02-degree-hook.mp4", [
-        (overlay_frame(["Your degree", "≠ your destiny."], badge="HARD TRUTH"), 0.3, 3.6),
-        (overlay_frame(["Your skills decide", "where you can go."]), 3.8, 6.6),
-        (overlay_frame(["Find out where.", "Free."], cta="veilresearch.com"), 6.8, 9.6),
+    render_video("reel-02-five-tabs-hook.mp4", [
+        (overlay_frame(["Doing research", "across 5 tabs?"], badge="HARD TRUTH"), 0.3, 3.6),
+        (overlay_frame(["Every switch", "wipes your context."]), 3.8, 6.6),
+        (overlay_frame(["Keep it all.", "One workspace."], cta="veilresearch.com"), 6.8, 9.6),
     ])
-    render_video("reel-03-3-careers.mp4", [
-        (overlay_frame(["3 careers your", "skills already unlock"], badge="SAVE THIS"), 0.3, 3.2),
-        (overlay_frame(["1. The one your", "degree promised"]), 3.4, 5.6),
-        (overlay_frame(["2. The one your", "side skills built"]), 5.8, 8.0),
-        (overlay_frame(["3. The one AI sees", "that you don't"], cta="veilresearch.com"), 8.2, 11.4),
+    render_video("reel-03-five-modes.mp4", [
+        (overlay_frame(["5 AI modes.", "One workspace."], badge="SAVE THIS"), 0.3, 3.2),
+        (overlay_frame(["Research. Biology.", "Flywheel."]), 3.4, 5.6),
+        (overlay_frame(["Write.", "Mathematics."]), 5.8, 8.0),
+        (overlay_frame(["Switch mid-session.", "Lose nothing."], cta="veilresearch.com"), 8.2, 11.4),
     ])
-    render_video("reel-04-career-analyzer.mp4", [
-        (overlay_frame(["NEW: Career", "Analyzer"], badge="FEATURE DROP", sub="Degree + skills + interests in. Career map out."), 0.3, 4.4),
-        (overlay_frame(["Stop guessing.", "Start mapping."], cta="Try it free"), 4.6, 8.4),
+    render_video("reel-04-workflows.mp4", [
+        (overlay_frame(["1000+ research", "pipelines"], badge="FEATURE DROP", sub="Literature synthesis. AlphaFold runs. Fine-tunes. LaTeX drafts."), 0.3, 4.4),
+        (overlay_frame(["Ready to run.", "Zero config."], cta="Launch a workflow"), 4.6, 8.4),
     ])
-    render_video("reel-05-skill-stat.mp4", [
-        (overlay_frame(["39%"], sub="of core job skills will change by 2030 (WEF, Future of Jobs 2025)", badge="CAREER SIGNAL"), 0.3, 4.2),
-        (overlay_frame(["Is yours on", "the list?"], cta="Check → veilresearch.com"), 4.4, 8.2),
+    render_video("reel-05-50-papers.mp4", [
+        (overlay_frame(["50 papers."], sub="Synthesized into one survey, with the open research gaps flagged.", badge="ONE PROMPT"), 0.3, 4.2),
+        (overlay_frame(["Your literature", "review, automated."], cta="Try → veilresearch.com"), 4.4, 8.2),
     ])
     render_video("reel-06-pov-trend.mp4", [
         (overlay_frame(["POV:"], badge="WAIT FOR IT"), 0.3, 2.4),
-        (overlay_frame(["You finally know what", "to do with your degree."]), 2.6, 6.0),
-        (overlay_frame(["That feeling?", "It's one scan away."], cta="veilresearch.com"), 6.2, 9.4),
+        (overlay_frame(["Your training run kept going", "after you closed the laptop."]), 2.6, 6.0),
+        (overlay_frame(["Always-on agents.", "Results in your dashboard."], cta="veilresearch.com"), 6.2, 9.4),
     ])
-    render_video("reel-07-skill-gap.mp4", [
-        (overlay_frame(["The job you want", "is 3 skills away."], badge="SKILL GAP"), 0.3, 3.8),
-        (overlay_frame(["Veil tells you", "which 3."]), 4.0, 6.6),
-        (overlay_frame(["Then how to", "learn them."], cta="Get your roadmap"), 6.8, 9.8),
+    render_video("reel-07-your-compute.mp4", [
+        (overlay_frame(["Your keys.", "Your compute."], badge="ONE-TIME SETUP"), 0.3, 3.8),
+        (overlay_frame(["GitHub. Hugging Face.", "W&B. Modal."]), 4.0, 6.6),
+        (overlay_frame(["Wired once. Flows", "to every agent."], cta="Set up in minutes"), 6.8, 9.8),
     ])
-    render_video("reel-08-waitlist.mp4", [
-        (overlay_frame(["Career Match", "Score"], badge="COMING SOON", sub="One score. How close you are to any role."), 0.3, 4.4),
-        (overlay_frame(["Waitlist is open.", "Be first."], cta="Link in bio"), 4.6, 8.4),
+    render_video("reel-08-early-access.mp4", [
+        (overlay_frame(["2,400+", "researchers"], badge="EARLY ACCESS", sub="are already running experiments, reviews and training inside Veil."), 0.3, 4.4),
+        (overlay_frame(["The waitlist", "is open."], cta="Link in bio"), 4.6, 8.4),
     ])
 
 
