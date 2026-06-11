@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veil Content Studio — Download Hub</title>
+<style>
+  :root{
+    --ink:#0b0716; --deep:#180d38; --card:#171030; --line:rgba(255,255,255,.09);
+    --violet:#7c3aed; --fuchsia:#d946ef; --cyan:#22d3ee;
+    --text:#f5f3ff; --muted:#a79ec4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%, rgba(124,58,237,.35), transparent 60%),
+               radial-gradient(900px 500px at -10% 40%, rgba(217,70,239,.18), transparent 60%),
+               linear-gradient(180deg,var(--ink),var(--deep));
+    color:var(--text); min-height:100vh;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  header{display:flex;align-items:center;justify-content:space-between;padding:28px 0}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px;letter-spacing:.12em}
+  .logo svg{display:block}
+  .pill{border:1px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:700;letter-spacing:.1em}
+  .hero{padding:48px 0 28px}
+  .hero h1{font-size:clamp(32px,5vw,56px);line-height:1.08;max-width:760px}
+  .hero h1 span{background:linear-gradient(90deg,var(--violet),var(--fuchsia),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);margin-top:16px;max-width:640px;font-size:17px}
+  .stats{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+  .stats div{border:1px solid var(--line);border-radius:14px;padding:14px 22px;background:rgba(255,255,255,.03)}
+  .stats b{font-size:24px;display:block}
+  .stats span{color:var(--muted);font-size:13px}
+  nav.filters{display:flex;gap:10px;flex-wrap:wrap;margin:36px 0 22px;position:sticky;top:0;padding:14px 0;background:linear-gradient(180deg,rgba(11,7,22,.95),rgba(11,7,22,.85));backdrop-filter:blur(8px);z-index:5}
+  .filters button{
+    background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--text);
+    padding:9px 18px;border-radius:999px;cursor:pointer;font-size:14px;font-weight:600;transition:.15s
+  }
+  .filters button:hover{border-color:var(--violet)}
+  .filters button.active{background:var(--violet);border-color:var(--violet)}
+  h2.sec{margin:34px 0 6px;font-size:24px}
+  p.sub{color:var(--muted);margin-bottom:18px;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .15s,border-color .15s
+  }
+  .card:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.6)}
+  .thumb{position:relative;background:#000}
+  .thumb img,.thumb video{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+  .thumb.tall img,.thumb.tall video{aspect-ratio:9/16}
+  .badge{position:absolute;top:10px;left:10px;background:rgba(11,7,22,.8);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--cyan)}
+  .meta{padding:14px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .meta h3{font-size:15px;font-weight:700}
+  .meta small{color:var(--muted);font-size:12px}
+  .actions{display:flex;gap:8px;margin-top:auto}
+  .btn{
+    flex:1;text-align:center;text-decoration:none;font-size:13px;font-weight:700;cursor:pointer;
+    padding:10px 12px;border-radius:10px;border:1px solid transparent;color:#fff;
+    background:linear-gradient(90deg,var(--violet),var(--fuchsia));
+  }
+  .btn.ghost{background:transparent;border-color:var(--line);color:var(--muted)}
+  .btn.ghost:hover{color:var(--text);border-color:var(--violet)}
+  .report{margin:56px 0;border:1px solid var(--line);border-radius:20px;padding:32px;background:rgba(255,255,255,.03)}
+  .report h2{font-size:26px;margin-bottom:6px}
+  .report h2 span{color:var(--cyan)}
+  .report .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:22px}
+  .report .col{border:1px solid var(--line);border-radius:14px;padding:20px;background:rgba(11,7,22,.5)}
+  .report h3{font-size:16px;margin-bottom:10px;color:var(--fuchsia)}
+  .report ul{list-style:none}
+  .report li{color:var(--muted);font-size:14px;padding:7px 0 7px 22px;position:relative;line-height:1.5}
+  .report li::before{content:"◆";position:absolute;left:0;color:var(--violet);font-size:10px;top:11px}
+  .report li b{color:var(--text)}
+  footer{padding:40px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--violet);color:#fff;padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;opacity:0;pointer-events:none;transition:.25s}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">
+      <svg width="34" height="30" viewBox="0 0 34 30" fill="none">
+        <path d="M2 28 L11 2 L20 28" stroke="#22d3ee" stroke-width="2.5" fill="none"/>
+        <path d="M14 28 L23 2 L32 28" stroke="#d946ef" stroke-width="2.5" fill="none"/>
+      </svg>
+      VEIL <span style="font-weight:300;color:var(--muted)">/ CONTENT STUDIO</span>
+    </div>
+    <div class="pill">@VEILRESEARCH</div>
+  </header>
+
+  <section class="hero">
+    <h1>Post-ready content for <span>Veil AI</span>. Download. Post. Grow.</h1>
+    <p>Every asset below is on-brand, sized for Instagram, and ready to download —
+       quote cards, stat posts, reel covers, feature drops, carousels, story templates
+       and animated reels. Built from the June 2026 trend report at the bottom of this page.</p>
+    <div class="stats">
+      <div><b id="imgCount">25</b><span>images ready to download</span></div>
+      <div><b id="vidCount">8</b><span>reels ready to download</span></div>
+      <div><b>1080px</b><span>feed 4:5 &amp; reels 9:16</span></div>
+    </div>
+  </section>
+
+  <nav class="filters" id="filters">
+    <button data-f="all" class="active">All</button>
+    <button data-f="quote">Quote cards</button>
+    <button data-f="stat">Stat posts</button>
+    <button data-f="cover">Reel covers</button>
+    <button data-f="feature">Feature drops</button>
+    <button data-f="carousel">Carousel</button>
+    <button data-f="story">Story templates</button>
+    <button data-f="video">Reels (video)</button>
+  </nav>
+
+  <h2 class="sec">Images</h2>
+  <p class="sub">Click <b>Download</b> to save the PNG, or <b>Caption</b> to copy a ready-made caption + hashtags.</p>
+  <div class="grid" id="imageGrid"></div>
+
+  <h2 class="sec" id="videosSec">Reels</h2>
+  <p class="sub">1080×1920 MP4, 30fps. Hover to preview. Add trending audio in the Instagram app before posting.</p>
+  <div class="grid" id="videoGrid"></div>
+
+  <section class="report" id="report">
+    <h2>June 2026 Trend Report <span>×</span> Veil AI</h2>
+    <p class="sub">Why these assets look the way they do — and the playbook for a million-view reel.</p>
+    <div class="cols">
+      <div class="col">
+        <h3>What's working on IG right now</h3>
+        <ul>
+          <li><b>Raw beats polished:</b> low-production, personal-feel video outperforms studio edits.</li>
+          <li><b>"Seeing if the algorithm prefers"</b> format: post two versions, let comments vote.</li>
+          <li><b>POV + text-hook reels:</b> a bold on-screen line in the first 0.5s decides the scroll.</li>
+          <li><b>Educational carousels</b> and photo dumps are quietly out-reaching reels for saves.</li>
+          <li>Reels = 50% of time on IG and 2× the reach of a static photo — but the save/share ratio is what the algorithm boosts.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Million-view reel formula for Veil</h3>
+        <ul>
+          <li><b>Hook (0–1s):</b> "I asked AI what my degree is actually worth…" — screen-record the Career Analyzer.</li>
+          <li><b>Tension (1–8s):</b> show the unexpected result. Surprise = shares.</li>
+          <li><b>Payoff (8–20s):</b> 3 career paths + the exact missing skills.</li>
+          <li><b>CTA (last 2s):</b> "Comment your degree, I'll run it" — comment-bait fuels the algorithm.</li>
+          <li>Post 3–5×/week, same hook family, iterate on retention graphs.</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Top 5 reel concepts (in this pack)</h3>
+        <ul>
+          <li><b>"Degree ≠ destiny"</b> hard-truth hook → reel-02.</li>
+          <li><b>POV trend</b> remap: "You finally know what to do with your degree" → reel-06.</li>
+          <li><b>Live demo:</b> run a follower's degree through the Analyzer on camera → cover in reel-cover-03.</li>
+          <li><b>Stat shock:</b> 39% of core skills change by 2030 (WEF) → reel-05.</li>
+          <li><b>Comment-your-degree series:</b> each reply becomes the next reel — infinite content loop.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Veil — veilresearch.com</span>
+    <span>Generated with <code>generate_assets.py</code> · re-run it to rebuild every asset</span>
+  </footer>
+</div>
+<div class="toast" id="toast">Caption copied ✓</div>
+
+<script>
+const HASHTAGS = "#careeradvice #ai #careertok #skills #futureofwork #students #veilai";
+const IMAGES = [
+  ...[1,2,3,4].map(i=>({f:`quote-card-0${i}.png`,c:"quote",t:`Quote card ${i}`,s:"1080×1350 · feed",
+    cap:`Your future isn't random. It's hidden in your skills. 🔮 See what yours are worth → veilresearch.com ${HASHTAGS}`})),
+  ...[1,2,3,4].map(i=>({f:`stat-card-0${i}.png`,c:"stat",t:`Stat post ${i}`,s:"1080×1350 · feed",
+    cap:`The job market is moving. Are your skills moving with it? Map your gap free → veilresearch.com ${HASHTAGS}`})),
+  ...[1,2,3,4].map(i=>({f:`reel-cover-0${i}.png`,c:"cover",t:`Reel cover ${i}`,s:"1080×1920 · reel cover",tall:true,
+    cap:`Watch till the end 👀 Then comment your degree and I'll run it through Veil. ${HASHTAGS}`})),
+  ...[1,2,3,4].map(i=>({f:`feature-card-0${i}.png`,c:"feature",t:`Feature drop ${i}`,s:"1080×1350 · feed",
+    cap:`New in Veil AI 🚀 Your degree + skills + interests in, career map out. Try it → veilresearch.com ${HASHTAGS}`})),
+  ...[1,2,3,4,5,6].map(i=>({f:`carousel-skills-0${i}.png`,c:"carousel",t:`Carousel · slide ${i}/6`,s:"1080×1350 · post all 6 in order",
+    cap:`5 skills AI can't replace (and how to build them) 🧠 Save this. Which one are you working on? ${HASHTAGS}`})),
+  {f:"story-waitlist-01.png",c:"story",t:"Story · waitlist CTA",s:"1080×1920 · story",tall:true,
+    cap:"Add a link sticker → veilresearch.com"},
+  {f:"story-qna-02.png",c:"story",t:"Story · Q&A template",s:"1080×1920 · add question sticker",tall:true,
+    cap:"Place the IG question sticker in the empty box."},
+  {f:"story-poll-03.png",c:"story",t:"Story · this-or-that poll",s:"1080×1920 · add poll sticker",tall:true,
+    cap:"Place poll stickers over the two option boxes."},
+];
+const VIDEOS = [
+  {f:"reel-01-brand-intro.mp4",t:"Brand intro — 'See it. Map it. Build it.'",s:"9s"},
+  {f:"reel-02-degree-hook.mp4",t:"Hook — 'Your degree ≠ your destiny'",s:"10s"},
+  {f:"reel-03-3-careers.mp4",t:"Listicle — '3 careers your skills unlock'",s:"12s"},
+  {f:"reel-04-career-analyzer.mp4",t:"Feature drop — Career Analyzer",s:"9s"},
+  {f:"reel-05-skill-stat.mp4",t:"Stat shock — '39% of skills change by 2030'",s:"9s"},
+  {f:"reel-06-pov-trend.mp4",t:"POV trend — 'You finally know…'",s:"10s"},
+  {f:"reel-07-skill-gap.mp4",t:"Skill gap — 'The job you want is 3 skills away'",s:"10s"},
+  {f:"reel-08-waitlist.mp4",t:"Waitlist — Career Match Score teaser",s:"9s"},
+];
+const VCAP = `POV: you stop guessing your career and start mapping it 🗺️ Comment your degree and I'll run it through Veil AI. ${HASHTAGS}`;
+
+const imgGrid = document.getElementById("imageGrid");
+const vidGrid = document.getElementById("videoGrid");
+const toast = document.getElementById("toast");
+
+function copyCap(text){
+  navigator.clipboard.writeText(text).then(()=>{
+    toast.classList.add("show");
+    setTimeout(()=>toast.classList.remove("show"),1600);
+  });
+}
+
+IMAGES.forEach(a=>{
+  const el = document.createElement("div");
+  el.className = "card"; el.dataset.cat = a.c;
+  el.innerHTML = `
+    <div class="thumb ${a.tall?"tall":""}">
+      <span class="badge">${a.c.toUpperCase()}</span>
+      <img loading="lazy" src="assets/images/${a.f}" alt="${a.t}">
+    </div>
+    <div class="meta">
+      <h3>${a.t}</h3><small>${a.s}</small>
+      <div class="actions">
+        <a class="btn" href="assets/images/${a.f}" download>Download</a>
+        <button class="btn ghost">Caption</button>
+      </div>
+    </div>`;
+  el.querySelector("button").onclick = ()=>copyCap(a.cap);
+  imgGrid.appendChild(el);
+});
+
+VIDEOS.forEach(a=>{
+  const el = document.createElement("div");
+  el.className = "card"; el.dataset.cat = "video";
+  el.innerHTML = `
+    <div class="thumb tall">
+      <span class="badge">REEL</span>
+      <video muted loop playsinline preload="metadata" src="assets/videos/${a.f}"></video>
+    </div>
+    <div class="meta">
+      <h3>${a.t}</h3><small>1080×1920 · ${a.s} · mp4</small>
+      <div class="actions">
+        <a class="btn" href="assets/videos/${a.f}" download>Download</a>
+        <button class="btn ghost">Caption</button>
+      </div>
+    </div>`;
+  const v = el.querySelector("video");
+  el.addEventListener("mouseenter",()=>v.play());
+  el.addEventListener("mouseleave",()=>{v.pause();v.currentTime=0;});
+  el.querySelector("button").onclick = ()=>copyCap(VCAP);
+  vidGrid.appendChild(el);
+});
+
+document.getElementById("imgCount").textContent = IMAGES.length;
+document.getElementById("vidCount").textContent = VIDEOS.length;
+
+document.getElementById("filters").addEventListener("click",e=>{
+  if(e.target.tagName!=="BUTTON") return;
+  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+  e.target.classList.add("active");
+  const f = e.target.dataset.f;
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display = (f==="all"||c.dataset.cat===f) ? "" : "none";
+  });
+});
+</script>
+</body>
+</html>
