@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale } from "@/lib/locale";
 import { contact, instrumentsList, t, type Locale } from "@/content/copy";
 import { enquirySchema, DISCIPLINES, type EnquiryInput } from "@/lib/schema";
-import { submitEnquiry } from "@/app/actions";
+import { submitEnquiry } from "@/lib/enquiry-client";
 import { Button } from "./Button";
 
 const inputCls =
