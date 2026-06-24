@@ -44,13 +44,13 @@ export function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(120% 90% at 50% 0%, #251a45 0%, #140f2c 45%, #0d0a1f 100%)",
+            "radial-gradient(120% 90% at 50% 0%, #fbeed4 0%, #fcf6ea 45%, #ffffff 100%)",
         }}
       />
       {/* Volumetric gold glow + animated sheen. */}
       <div
         aria-hidden
-        className="sheen pointer-events-none absolute inset-0 -z-10 opacity-60"
+        className="sheen pointer-events-none absolute inset-0 -z-10 opacity-70"
       />
       <div
         aria-hidden

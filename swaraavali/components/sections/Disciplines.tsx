@@ -32,7 +32,7 @@ export function Disciplines() {
                   {d.icon}
                 </div>
                 <h3 className="text-cream mt-4 text-2xl">{t(d.title, l)}</h3>
-                <p className="text-gold-hi mt-3 text-base leading-relaxed">
+                <p className="text-gold mt-3 text-base leading-relaxed">
                   {t(d.punchline, l)}
                 </p>
                 <p className="text-muted mt-4 text-sm leading-relaxed">{t(d.items, l)}</p>

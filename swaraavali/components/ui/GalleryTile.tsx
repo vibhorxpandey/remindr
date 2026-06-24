@@ -35,12 +35,13 @@ export function GalleryTile({
           aria-hidden
           className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
           style={{
-            background: `linear-gradient(135deg, hsl(${item.hue} 45% 22%), hsl(${item.hue + 25} 40% 12%))`,
+            background: `linear-gradient(135deg, hsl(${item.hue} 52% 58%), hsl(${item.hue + 25} 48% 38%))`,
           }}
         />
       )}
-      <div className="from-void/80 absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
-      <span className="text-cream absolute right-3 bottom-3 left-3 text-sm font-medium">
+      {/* Dark scrim at the bottom for a legible white label, theme-independent. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+      <span className="absolute right-3 bottom-3 left-3 text-sm font-medium text-white">
         {label}
       </span>
     </>

@@ -18,19 +18,19 @@ export default function OgImage() {
         justifyContent: "center",
         padding: "80px",
         background:
-          "radial-gradient(120% 90% at 50% 0%, #251a45 0%, #140f2c 45%, #0d0a1f 100%)",
-        color: "#F7F1E3",
+          "radial-gradient(120% 90% at 50% 0%, #fbeed4 0%, #fcf6ea 45%, #ffffff 100%)",
+        color: "#241a33",
         fontFamily: "serif",
       }}
     >
-      <div style={{ fontSize: 110, color: "#E0A030", display: "flex" }}>
+      <div style={{ fontSize: 110, color: "#9a6a0a", display: "flex" }}>
         {site.nameDevanagari}
       </div>
       <div style={{ fontSize: 64, marginTop: 8, display: "flex" }}>{site.shortName}</div>
-      <div style={{ fontSize: 32, marginTop: 24, color: "#C9BFA8", display: "flex" }}>
+      <div style={{ fontSize: 32, marginTop: 24, color: "#6a6175", display: "flex" }}>
         Music · Dance · Fine Arts — Karvi, Chitrakoot
       </div>
-      <div style={{ fontSize: 28, marginTop: 40, color: "#F5C451", display: "flex" }}>
+      <div style={{ fontSize: 28, marginTop: 40, color: "#4a1020", display: "flex" }}>
         {site.tagline}
       </div>
     </div>,

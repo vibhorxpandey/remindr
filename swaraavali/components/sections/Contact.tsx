@@ -55,7 +55,7 @@ export function Contact() {
                       href={whatsappLink()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gold hover:text-gold-hi flex items-center gap-2 font-semibold"
+                      className="text-gold hover:text-maroon flex items-center gap-2 font-semibold"
                     >
                       <span aria-hidden>💬</span>
                       {l === "en" ? "Chat on WhatsApp" : "व्हाट्सऐप पर चैट करें"}

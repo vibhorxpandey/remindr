@@ -61,14 +61,14 @@ export function GalleryGrid() {
           role="dialog"
           aria-modal="true"
           aria-label={t(active.title, l)}
-          className="bg-void/95 fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
           onClick={close}
         >
           <button
             type="button"
             onClick={close}
             aria-label="Close"
-            className="border-gold/40 text-cream hover:bg-gold/10 absolute top-5 right-5 inline-flex h-11 w-11 items-center justify-center rounded-full border"
+            className="absolute top-5 right-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-white hover:bg-white/10"
           >
             ✕
           </button>
@@ -79,7 +79,7 @@ export function GalleryGrid() {
               prev();
             }}
             aria-label="Previous"
-            className="border-gold/40 text-cream hover:bg-gold/10 absolute left-5 inline-flex h-11 w-11 items-center justify-center rounded-full border"
+            className="absolute left-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-white hover:bg-white/10"
           >
             ‹
           </button>
@@ -90,7 +90,7 @@ export function GalleryGrid() {
               active.imageUrl
                 ? undefined
                 : {
-                    background: `linear-gradient(135deg, hsl(${active.hue} 45% 25%), hsl(${active.hue + 25} 40% 14%))`,
+                    background: `linear-gradient(135deg, hsl(${active.hue} 52% 55%), hsl(${active.hue + 25} 48% 36%))`,
                   }
             }
           >
@@ -102,7 +102,7 @@ export function GalleryGrid() {
                 className="h-full w-full object-contain"
               />
             )}
-            <figcaption className="bg-void/70 text-cream absolute right-0 bottom-0 left-0 p-4 text-center">
+            <figcaption className="absolute right-0 bottom-0 left-0 bg-black/60 p-4 text-center text-white">
               {t(active.title, l)}
             </figcaption>
           </figure>

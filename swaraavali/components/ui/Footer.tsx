@@ -44,7 +44,7 @@ export function Footer() {
               href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold hover:text-gold-hi"
+              className="text-gold hover:text-maroon"
             >
               {l === "en" ? "Chat on WhatsApp →" : "व्हाट्सऐप पर चैट →"}
             </a>

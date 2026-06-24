@@ -11,7 +11,7 @@ swara glyphs** — layered on top of a fully accessible, SEO-correct base site.
 ## Stack
 
 - **Next.js 15** (App Router, React 19, Server Actions) · TypeScript (strict)
-- **Tailwind CSS v4** design system (dark indigo + saffron-gold)
+- **Tailwind CSS v4** design system (light / white theme + saffron-gold accents)
 - **react-hook-form + zod** typed forms (shared client/server schema)
 - ESLint 9 (flat config) + Prettier
 - _Planned:_ Drizzle/Supabase, Resend, Upstash, three.js / R3F (see Phases)

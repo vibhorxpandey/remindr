@@ -24,7 +24,7 @@ export function GalleryTeaser() {
           />
           <Link
             href="/gallery"
-            className="text-gold hover:text-gold-hi text-sm font-semibold"
+            className="text-gold hover:text-maroon text-sm font-semibold"
           >
             {l === "en" ? "View full gallery →" : "पूरी गैलरी देखें →"}
           </Link>

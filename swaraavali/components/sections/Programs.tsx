@@ -22,7 +22,7 @@ export function Programs() {
                   0{i + 1}
                 </span>
                 <h3 className="text-cream mt-4 text-xl">{t(p.title, l)}</h3>
-                <p className="text-gold-hi mt-3 text-base leading-relaxed">
+                <p className="text-gold mt-3 text-base leading-relaxed">
                   {t(p.punchline, l)}
                 </p>
                 <p className="text-muted mt-3 text-sm leading-relaxed">

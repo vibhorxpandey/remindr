@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Swaraavali design system — dark-first, culturally rooted.
-   Palette, type scale, and motifs from the brand brief.
+   Swaraavali design system — LIGHT theme, culturally rooted.
+   Tokens are SEMANTIC, not literal: `void` = base surface (now white),
+   `cream` = primary text (now deep indigo). This keeps component class names
+   (bg-void / text-cream / …) meaningful while flipping the whole theme.
+   Accent gold is intentionally deep enough to pass WCAG AA as text on white.
 --------------------------------------------------------------------------- */
 @theme {
-  /* Colors */
-  --color-void: #0d0a1f; /* void indigo (page bg) */
-  --color-panel: #1a1333; /* panel indigo (cards) */
-  --color-maroon: #4a1020; /* royal maroon accent */
-  --color-gold: #e0a030; /* saffron-gold primary */
-  --color-gold-hi: #f5c451; /* gold highlight */
-  --color-cream: #f7f1e3; /* primary text */
-  --color-muted: #c9bfa8; /* muted text */
+  /* Colors (semantic) */
+  --color-void: #ffffff; /* base surface — page background (white) */
+  --color-panel: #f5efe1; /* warm cream — section washes / cards */
+  --color-maroon: #4a1020; /* royal maroon accent (high contrast on white) */
+  --color-gold: #9a6a0a; /* deep turmeric gold — AA text/border/button bg */
+  --color-gold-hi: #e0a030; /* bright saffron — DECORATIVE only (glow/sheen) */
+  --color-cream: #241a33; /* primary text — deep indigo (~13:1 on white) */
+  --color-muted: #6a6175; /* muted text (~5:1 on white) */
 
   /* Fonts — bound to next/font CSS variables in layout.tsx */
   --font-display: var(--font-fraunces), Georgia, serif;
@@ -26,7 +29,7 @@
 /* Base element styling */
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
@@ -65,16 +68,17 @@
     letter-spacing: -0.01em;
   }
 
-  /* Visible focus for keyboard users (WCAG 2.1 AA). */
+  /* Visible focus for keyboard users — deep gold meets the 3:1 non-text
+     contrast requirement against white (WCAG 2.1 AA). */
   :focus-visible {
-    outline: 2px solid var(--color-gold-hi);
+    outline: 2px solid var(--color-gold);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
   ::selection {
-    background: var(--color-gold);
-    color: var(--color-void);
+    background: var(--color-gold-hi);
+    color: var(--color-maroon);
   }
 }
 
@@ -86,7 +90,7 @@
     top: 0;
     z-index: 100;
     background: var(--color-gold);
-    color: var(--color-void);
+    color: #ffffff;
     padding: 0.75rem 1.25rem;
     border-radius: 0 0 0.5rem 0;
     font-weight: 600;
@@ -95,14 +99,14 @@
     left: 0;
   }
 
-  /* Subtle gold sheen used on the static hero poster + headings. */
+  /* Rich gold→maroon gradient used on the brand wordmark. Legible on white. */
   .gold-gradient {
     background: linear-gradient(
       100deg,
       var(--color-gold) 0%,
-      var(--color-gold-hi) 45%,
-      var(--color-cream) 70%,
-      var(--color-gold-hi) 100%
+      #c8881a 35%,
+      var(--color-maroon) 72%,
+      var(--color-gold) 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -110,12 +114,12 @@
     color: transparent;
   }
 
-  /* Animated sheen for the no-WebGL hero poster. */
+  /* Animated warm sheen for the hero poster (subtle on a light surface). */
   .sheen {
     background: linear-gradient(
       100deg,
       transparent 30%,
-      color-mix(in srgb, var(--color-gold-hi) 35%, transparent) 50%,
+      color-mix(in srgb, var(--color-gold-hi) 22%, transparent) 50%,
       transparent 70%
     );
     background-size: 200% 100%;
@@ -133,18 +137,18 @@
     background: linear-gradient(
       90deg,
       transparent,
-      color-mix(in srgb, var(--color-gold) 60%, transparent),
+      color-mix(in srgb, var(--color-gold) 50%, transparent),
       transparent
     );
   }
 
-  /* Film grain overlay (very subtle). */
+  /* Film grain overlay (barely-there texture on the warm surface). */
   .grain::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.04;
+    opacity: 0.035;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
